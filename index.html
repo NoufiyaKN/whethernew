@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./whether.css">
+</head>
+<body>
+    <div id="title" class="h1 mt-3">
+        <h1 class="text-dark mt-3 mb-3">Whether Details </h1>
+        <img src="./hot balloon1.jpg" alt="">
+    </div>
+    <div id="weather-container">
+        <input type="text" id="cityInput" class="input-filed" placeholder="Enter city name">
+        <hr>
+        <button onclick="getWeather()" id="btn" class="input-filed">Search</button>
+        <div id="weather-details"></div>
+    </div>
+    <script>
+        function getWeather() {
+            const apiKey = '8ac5c4d57ba6a4b3dfcf622700447b1e';
+            const city = document.getElementById('cityInput').value;
+
+            // Fetch weather data from OpenWeatherMap API
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+                .then(response => response.json())
+                .then(data => {
+                    // Display weather details
+                    const weatherDetails = document.getElementById('weather-details');
+                    weatherDetails.innerHTML = `
+                        <h2>${data.name}, ${data.sys.country}</h2>
+                        <p>Temperature: ${data.main.temp}°C</p>
+                        <p>Weather: ${data.weather[0].description}</p>
+                        <p>Humidity: ${data.main.humidity}°C</p>
+                        <p>Wind: ${data.wind.speed},${data.wind.deg}</p>
+                        <p>Presuure: ${data.main.pressure}°C</p>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    const weatherDetails = document.getElementById('weather-details');
+                    weatherDetails.innerHTML = '<p>Failed to fetch weather data. Please try again.</p>';
+                });
+        }
+    </script>
+</body>
+</html>

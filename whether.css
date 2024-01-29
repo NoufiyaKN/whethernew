@@ -1,0 +1,40 @@
+body{
+    height: 600px;
+    background: rgb(7,94,134);
+    background: linear-gradient(-25deg, rgba(7,94,134,1) 22%, rgba(71,192,224,1) 61%, rgba(98,208,237,1) 81%);
+    background-repeat: no-repeat;
+    background-color: cover;
+}
+#title img{
+    height: 500px;
+    width: 660px;
+}
+#weather-container{
+    height: 500px;
+    width: 50%;
+    background: rgba(0, 0, 0, 0.429);
+    margin-left: 665px;
+    margin-top: -505px;
+}
+#cityInput{
+    border: none;
+    background-color: rgb(0, 183, 255);
+}
+#btn{
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(0, 183, 255);
+}
+#btn:hover{
+    background-color: rgb(43, 144, 184);
+}
+.input-filed{
+margin: 15px 0;
+margin-left: 5px;
+border-left: 0;
+border-top: 0;
+border-right: 0;
+border-bottom: 1px solid #999;
+outline: none;
+background: transparent;
+}
